@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">AI Helpdesk</string>
+    <string name="customer_name_hint">Enter customer name</string>
+    <string name="query_hint">Enter customer query</string>
+    <string name="submit_button">Analyze Query</string>
+    <string name="escalate_checkbox">Escalate to human agent</string>
+    <string name="analyzing">Analyzing query...</string>
+    <string name="results_title">Analysis Results</string>
+    <string name="category_label">Category:</string>
+    <string name="priority_label">Priority:</string>
+    <string name="confidence_label">Confidence:</string>
+    <string name="response_label">AI Response:</string>
+    <string name="salesforce_label">Salesforce Status:</string>
+</resources>
+
+
+
+
+    <!--<resources>-->
+<!--    <string name="app_name">AI Helpdesk</string>-->
+<!--    <string name="customer_name_hint">Enter customer name</string>-->
+<!--    <string name="query_hint">Enter customer query</string>-->
+<!--    <string name="submit_button">Analyze Query</string>-->
+<!--    <string name="escalate_checkbox">Escalate to human agent</string>-->
+<!--    <string name="analyzing">Analyzing query...</string>-->
+<!--    <string name="results_title">Analysis Results</string>-->
+<!--    <string name="category_label">Category:</string>-->
+<!--    <string name="priority_label">Priority:</string>-->
+<!--    <string name="confidence_label">Confidence:</string>-->
+<!--    <string name="response_label">AI Response:</string>-->
+<!--    <string name="salesforce_label">Salesforce Status:</string>-->
+<!--</resources>-->
+
+
+
+
+    <!--<resources>-->
+<!--    <string name="app_name">AIHelpdesk</string>-->
+<!--</resources>-->

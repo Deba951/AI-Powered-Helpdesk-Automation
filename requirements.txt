@@ -1,0 +1,14 @@
+numpy==1.26.4
+pandas==2.2.2
+scikit-learn==1.5.1
+nltk==3.9.1
+streamlit==1.37.1
+flask==3.0.3
+fastapi==0.112.1
+uvicorn==0.30.5
+requests==2.32.3
+python-dotenv==1.0.1
+simple-salesforce==1.12.6
+google-generativeai==0.8.3
+fastapi
+requests
