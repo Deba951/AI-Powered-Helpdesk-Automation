@@ -11,7 +11,7 @@
 
 **An intelligent customer support system that uses Google Gemini AI to classify queries, predict priority, generate responses, and integrate with Salesforce CRM.**
 
-[📋 Features](#-features) • [🚀 Quick Start](#-quick-start) • [📖 Documentation](#-documentation) • [🤝 Contributing](#-contributing)
+[📋 Features](#-features) • [🚀 Quick Start](#-quick-start) • [📖 Documentation](#-documentation) 
 
 </div>
 
