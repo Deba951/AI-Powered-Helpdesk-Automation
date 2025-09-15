@@ -1,0 +1,11 @@
+# Environment variables
+.env
+
+# Python virtual environment
+myvenv/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# Data files
+data/
