@@ -7,10 +7,12 @@ from typing import Any
 load_dotenv()
 
 class SalesforceIntegration:
+    # Initializes the Salesforce connection when an object is created.
     def __init__(self):
         self.sf: Any = None  # type: ignore
         self.connect()
 
+    # Taking credentials from .env file to connect to Salesforce
     def connect(self):
         """Connect to Salesforce using credentials from environment variables."""
         try:
@@ -25,6 +27,7 @@ class SalesforceIntegration:
             print(f"Failed to connect to Salesforce: {e}")
             self.sf = None
 
+    # Creating the Case
     def create_case(self, customer_name, query, category, priority, ai_response, escalated=False):
         """
         Create a new Case record in Salesforce.
@@ -43,6 +46,7 @@ class SalesforceIntegration:
         if not self.sf:
             return {"success": False, "error": "Not connected to Salesforce"}
 
+        # If escalated, marks the Case as open
         try:
             # Determine status based on escalation
             status = "Open" if escalated else "Closed"
@@ -54,7 +58,7 @@ class SalesforceIntegration:
                 "High": "High"
             }.get(priority, "Medium")
 
-            # Create the case
+            # Create a dictionary case_data with all required fields.
             case_data = {
                 "Subject": f"AI Helpdesk: {category} - {customer_name}",
                 "Description": f"Customer Query: {query}\n\nAI Response: {ai_response}",
@@ -72,6 +76,7 @@ class SalesforceIntegration:
                 "Escalated__c": escalated
             }
 
+            # create the case
             result = self.sf.Case.create(case_data)  # type: ignore
             return {"success": True, "case_id": result['id'], "status": status}
 
@@ -79,6 +84,7 @@ class SalesforceIntegration:
             print(f"Error creating case: {e}")
             return {"success": False, "error": str(e)}
 
+    # Updates the Status field of a case using its case_id.
     def update_case_status(self, case_id, status):
         """Update the status of an existing case."""
         if not self.sf:
@@ -101,6 +107,7 @@ class SalesforceIntegration:
         except Exception as e:
             return {"success": False, "error": str(e)}
 
+    # Creates a task linked to a case (WhatId). Optionally assigns it to a user (OwnerId).
     def create_task(self, case_id, subject, description, assigned_to=None):
         """Create a task related to a case."""
         if not self.sf:
@@ -125,6 +132,7 @@ class SalesforceIntegration:
 # Global instance
 sf_integration = SalesforceIntegration()
 
+# Verifies if the connection is successful. Runs a sample query to fetch 5 cases
 def test_salesforce_connection():
     """Test function to verify Salesforce connection."""
     if sf_integration.sf:
