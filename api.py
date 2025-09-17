@@ -5,12 +5,15 @@ from ai_engine import classify_query
 from salesforce_integration import sf_integration
 import uvicorn
 
+# Initializes the FastAPI app with metadata.
 app = FastAPI(title="AI-Powered Helpdesk Automation", version="1.0.0")
 
+# Input for prediction endpoint.
 class QueryRequest(BaseModel):
     customer_name: str
     query: str
 
+# Output of prediction endpoint.
 class PredictionResponse(BaseModel):
     customer_name: str
     query: str
@@ -19,11 +22,13 @@ class PredictionResponse(BaseModel):
     response: str
     confidence: float
 
+# Input for case creation endpoint.
 class CaseCreationRequest(BaseModel):
     customer_name: str
     query: str
     escalated: bool = False
 
+# Output of case creation endpoint.
 class CaseCreationResponse(BaseModel):
     customer_name: str
     query: str
@@ -35,6 +40,8 @@ class CaseCreationResponse(BaseModel):
     salesforce_status: Optional[str] = None
     escalated: bool
 
+# Accepts customer name and query and then calls the classify_query() to get:
+# Category, Priority, AI-generated response, Confidence score and Returns the prediction in structured format.
 @app.post("/predict", response_model=PredictionResponse)
 async def predict(request: QueryRequest):
     """
@@ -53,6 +60,7 @@ async def predict(request: QueryRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Prediction failed: {str(e)}")
 
+# Accepts customer name, query, and escalation flag, then calls the classify_query() to get predictions, sf_integration.create_case() to create a Salesforce case and finally returns prediction, Salesforce case ID and status.
 @app.post("/create_case", response_model=CaseCreationResponse)
 async def create_case(request: CaseCreationRequest):
     """
